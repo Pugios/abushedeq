@@ -6,7 +6,7 @@ import {
   useLocation,
   useNavigate,
 } from "react-router-dom";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react"
 // src/figma-assets.d.ts
 declare module "figma:asset/*" {
   const src: string;
@@ -262,7 +262,6 @@ export default function App() {
           <Footer />
         </div>
       </Router>
-      {/* Vercel Analytics: place once at the app root so it runs on every page */}
       <Analytics />
     </LanguageProvider>
   );
