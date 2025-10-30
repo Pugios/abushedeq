@@ -1,8 +1,36 @@
 import { motion } from "motion/react";
+import { useRef, useState, useEffect } from "react";
 import imgHammerBauLogo from "figma:asset/070b048162e54b55e805df413fcf394b9a20f33b.png";
 import imgPalastKonditoreiLogo from "figma:asset/4695992f5b4bd9028582c951749270da9e386436.png";
+import { useLanguage } from "./LanguageContext";
+import { translations } from "../translations";
 
 export default function Press() {
+  const { language } = useLanguage();
+  const t = translations[language];
+  const palastRef = useRef<HTMLDivElement>(null);
+  const [palastPosition, setPalastPosition] = useState(1350);
+
+  useEffect(() => {
+    const updatePosition = () => {
+      if (palastRef.current) {
+        const rect = palastRef.current.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        const position = rect.top + scrollTop - 50; // Offset to position gradient nicely above the section
+        setPalastPosition(position);
+      }
+    };
+
+    // Update position on mount and resize
+    updatePosition();
+    window.addEventListener('resize', updatePosition);
+    
+    // Small delay to ensure all content is loaded
+    setTimeout(updatePosition, 100);
+
+    return () => window.removeEventListener('resize', updatePosition);
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#0A0B14] text-white pt-24 pb-16 relative overflow-hidden">
       {/* Background Gradients */}
@@ -15,7 +43,10 @@ export default function Press() {
           }}
         />
       </div>
-      <div className="absolute top-[1350px] right-0 w-full h-[1000px] pointer-events-none">
+      <div 
+        className="absolute right-0 w-full h-[1000px] pointer-events-none"
+        style={{ top: `${palastPosition}px` }}
+      >
         <div
           className="absolute top-0 right-0 w-[1000px] h-[1000px]"
           style={{
@@ -34,7 +65,7 @@ export default function Press() {
           transition={{ duration: 0.6 }}
         >
           <h1 className="text-4xl sm:text-5xl lg:text-6xl mb-4 px-[0px] py-[15px] mb-[200px] mt-[40px] mr-[0px] mb-[150px] ml-[0px]">
-            Presse <br></br>Mitteilungen
+            {t.press.title} <br></br>{t.press.subtitle}
           </h1>
           <p className="text-white/70 max-w-2xl mx-auto"></p>
         </motion.div>
@@ -151,13 +182,10 @@ export default function Press() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-[#D92727]/50 transition-all duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.4,
-                  delay: index * 0.05,
-                }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.4 }}
                 whileHover={{ y: -4, scale: 1.02 }}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-[#D92727]/0 to-[#D92727]/0 group-hover:from-[#D92727]/10 group-hover:to-[#D92727]/5 rounded-xl transition-all duration-300" />
@@ -169,7 +197,7 @@ export default function Press() {
                     {article.title}
                   </h4>
                   <div className="flex items-center gap-2 text-[#D92727] text-sm">
-                    <span>Read article</span>
+                    <span>{t.press.readArticle}</span>
                     <svg
                       className="w-4 h-4 group-hover:translate-x-1 transition-transform"
                       fill="none"
@@ -192,6 +220,7 @@ export default function Press() {
 
         {/* Palast Konditorei Articles */}
         <motion.div
+          ref={palastRef}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -254,13 +283,10 @@ export default function Press() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative bg-white/5 backdrop-blur-sm rounded-xl p-6 border border-white/10 hover:border-[#DCC685]/50 transition-all duration-300"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.4,
-                  delay: index * 0.05,
-                }}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.4 }}
                 whileHover={{ y: -4, scale: 1.02 }}
               >
                 <div className="absolute inset-0 bg-gradient-to-br from-[#DCC685]/0 to-[#DCC685]/0 group-hover:from-[#DCC685]/10 group-hover:to-[#DCC685]/5 rounded-xl transition-all duration-300" />
@@ -272,7 +298,7 @@ export default function Press() {
                     {article.title}
                   </h4>
                   <div className="flex items-center gap-2 text-[#DCC685] text-sm">
-                    <span>Read article</span>
+                    <span>{t.press.readArticle}</span>
                     <svg
                       className="w-4 h-4 group-hover:translate-x-1 transition-transform"
                       fill="none"

@@ -1,3 +1,6 @@
+import image_856a44a1156a10705253ff87d1d49e86bc09fcdf from 'figma:asset/856a44a1156a10705253ff87d1d49e86bc09fcdf.png';
+import image_333aa5d64fc9818b1215771a921d3c9eed9c062c from 'figma:asset/333aa5d64fc9818b1215771a921d3c9eed9c062c.png';
+import image_07e37c362ac1d9012705c3a22e2fb2d78e30d6f2 from 'figma:asset/07e37c362ac1d9012705c3a22e2fb2d78e30d6f2.png';
 import svgPaths from "../imports/svg-vymn29r931";
 import imgXWhite1 from "figma:asset/662e8955d5edb34e5342261bd0eec3b02b95bff7.png";
 import imgThreads1 from "figma:asset/9b5bb1248641f95cee6a86708cce08dca7f794f7.png";
@@ -11,17 +14,108 @@ import imgHammerBau from "figma:asset/1d8605050492947cec24948fe5365456752242b2.p
 import imgBauSimple1 from "figma:asset/95a58fe660456dbe84f08b65c5a0cc4475f64daf.png";
 import imgPalastLogoSimple1 from "figma:asset/48b2115b05a13022b596082182896f54c2651e9c.png";
 import imgLighthouseRestaurantLogo from "figma:asset/8ddc159fda6f536fb9d9fcdb5cd6fc257b49249b.png";
-import imgLighthouseHealthLogo from "figma:asset/78ca0ca4918d2355ae4cfa6f0e83ce4193ebb820.png";
+import imgLighthouseHealthLogo from "figma:asset/333aa5d64fc9818b1215771a921d3c9eed9c062c.png";
+import imgLighthouseHealthLogoWhite from "figma:asset/11f165bc39c13c4b14c2d73f50bcf6b83e76d93c.png";
+import imgPalmeraLogo from "figma:asset/6dcddd0fa33034b51698b2775de79f1fe9aa6356.png";
+import imgPalmeraSimple from "figma:asset/760901b4b48b95a944e1aa6a0fe6e160229946be.png";
+import imgPalmeraBackground from "figma:asset/c18ab45d95d35e1a7534083046d425e6cf6c36cd.png";
 import imgSuit2 from "figma:asset/29607a3d91472bd3358dff7b1ca841d4d551ecc0.png";
 import imgLogoWhite from "figma:asset/844a0b69883f8961b18f27beb99fb5fddc426fa1.png";
-import { useState } from "react";
+import imgHealthBackground from "figma:asset/996b71244e0bec2d2b0c2fe93b209665187f7aec.png";
+
+import { useState, useRef, useEffect } from "react";
 import { motion } from "motion/react";
+import { useLanguage } from "./LanguageContext";
+import { translations } from "../translations";
 
 export default function Home() {
+  const { language } = useLanguage();
+  const t = translations[language];
   const [hoveredLogo, setHoveredLogo] = useState<string | null>(
     null,
   );
-  const [mounted, setMounted] = useState(false);
+  const bauRef = useRef<HTMLDivElement>(null);
+  const palastRef = useRef<HTMLDivElement>(null);
+  const lighthouseRestaurantRef = useRef<HTMLDivElement>(null);
+  const lighthouseHealthRef = useRef<HTMLDivElement>(null);
+  const palmeraRef = useRef<HTMLDivElement>(null);
+  const businessesSectionRef = useRef<HTMLElement>(null);
+
+  const [bauPosition, setBauPosition] = useState(0);
+  const [bauHeight, setBauHeight] = useState(600);
+  const [palastPosition, setPalastPosition] = useState(400);
+  const [palastHeight, setPalastHeight] = useState(600);
+  const [
+    lighthouseRestaurantPosition,
+    setLighthouseRestaurantPosition,
+  ] = useState(800);
+  const [
+    lighthouseRestaurantHeight,
+    setLighthouseRestaurantHeight,
+  ] = useState(600);
+  const [
+    lighthouseHealthPosition,
+    setLighthouseHealthPosition,
+  ] = useState(1200);
+  const [lighthouseHealthHeight, setLighthouseHealthHeight] =
+    useState(600);
+  const [palmeraPosition, setPalmeraPosition] = useState(1600);
+  const [palmeraHeight, setPalmeraHeight] = useState(600);
+
+  useEffect(() => {
+    const updatePositions = () => {
+      if (!businessesSectionRef.current) return;
+
+      const scrollTop =
+        window.pageYOffset ||
+        document.documentElement.scrollTop;
+      const sectionTop =
+        businessesSectionRef.current.getBoundingClientRect()
+          .top + scrollTop;
+
+      if (bauRef.current) {
+        const rect = bauRef.current.getBoundingClientRect();
+        const cardTop = rect.top + scrollTop;
+        setBauPosition(cardTop - sectionTop - 100);
+        setBauHeight(rect.height + 200);
+      }
+      if (palastRef.current) {
+        const rect = palastRef.current.getBoundingClientRect();
+        const cardTop = rect.top + scrollTop;
+        setPalastPosition(cardTop - sectionTop - 100);
+        setPalastHeight(rect.height + 200);
+      }
+      if (lighthouseRestaurantRef.current) {
+        const rect =
+          lighthouseRestaurantRef.current.getBoundingClientRect();
+        const cardTop = rect.top + scrollTop;
+        setLighthouseRestaurantPosition(
+          cardTop - sectionTop - 100,
+        );
+        setLighthouseRestaurantHeight(rect.height + 200);
+      }
+      if (lighthouseHealthRef.current) {
+        const rect =
+          lighthouseHealthRef.current.getBoundingClientRect();
+        const cardTop = rect.top + scrollTop;
+        setLighthouseHealthPosition(cardTop - sectionTop - 100);
+        setLighthouseHealthHeight(rect.height + 200);
+      }
+      if (palmeraRef.current) {
+        const rect = palmeraRef.current.getBoundingClientRect();
+        const cardTop = rect.top + scrollTop;
+        setPalmeraPosition(cardTop - sectionTop - 100);
+        setPalmeraHeight(rect.height + 200);
+      }
+    };
+
+    updatePositions();
+    window.addEventListener("resize", updatePositions);
+    setTimeout(updatePositions, 100);
+
+    return () =>
+      window.removeEventListener("resize", updatePositions);
+  }, []);
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -62,25 +156,29 @@ export default function Home() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                  Nathmi
-                </motion.span>
-                <motion.span
-                  className="block"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                >
-                  Abushedeq
+                  {t.hero.title1} <br></br>
+                  {t.hero.title2}
                 </motion.span>
               </h1>
               <motion.p
-                className="text-base sm:text-lg lg:text-xl text-white/70 max-w-xl ml-auto"
+                className="text-base sm:text-lg lg:text-xl text-white/70 max-w-xl ml-auto mb-8"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.6 }}
               >
-                Immobilienunternehmer und Geschäftsführer
+                {t.hero.subtitle}
               </motion.p>
+              <motion.button
+                onClick={() => scrollToSection("contact")}
+                className="ml-auto px-8 py-3 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/40 rounded-lg backdrop-blur-sm transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {t.hero.cta}
+              </motion.button>
             </motion.div>
 
             <motion.div
@@ -105,7 +203,7 @@ export default function Home() {
                 <img
                   src={imgSuit2}
                   alt="Nathim Abushedeq"
-                  className="relative z-10 w-full h-full object-cover rounded-lg"
+                  className="relative z-10 w-full h-full object-contain rounded-lg"
                 />
               </div>
             </motion.div>
@@ -119,10 +217,10 @@ export default function Home() {
         className="py-16 sm:py-24 bg-[#0A0B14]"
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-4">
-            {/* Hammer Bau */}
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-0">
+            {/* Hammer Bau - Full Width */}
             <motion.div
-              className="flex flex-col items-center justify-center p-8 border-r border-b lg:border-b-0 cursor-pointer relative"
+              className="col-span-2 lg:col-span-1 flex flex-col items-center justify-center p-8 border-b lg:border-b-0 lg:border-r cursor-pointer relative"
               style={{
                 borderImage:
                   "linear-gradient(to bottom, rgba(0,0,0,0), rgba(255,255,255,0.6), rgba(0,0,0,0)) 1",
@@ -135,7 +233,7 @@ export default function Home() {
               onClick={() => scrollToSection("hammer-bau")}
             >
               <motion.div
-                className="absolute -inset-4"
+                className="absolute -inset-0"
                 animate={{
                   opacity: hoveredLogo === "hammer-bau" ? 1 : 0,
                 }}
@@ -156,14 +254,14 @@ export default function Home() {
                 <img
                   src={imgBauSimple1}
                   alt="Hammer Bau"
-                  className="h-40 lg:h-32 w-auto mb-4 object-contain"
+                  className="h-40 lg:h-32 w-auto object-contain"
                 />
               </motion.div>
             </motion.div>
 
             {/* Palast Konditorei */}
             <motion.div
-              className="flex flex-col items-center justify-center p-8 border-b lg:border-r lg:border-b-0 cursor-pointer relative"
+              className="flex flex-col items-center justify-center p-8 border-r border-b lg:border-b-0 cursor-pointer relative"
               style={{
                 borderImage:
                   "linear-gradient(to bottom, rgba(0,0,0,0), rgba(255,255,255,0.6), rgba(0,0,0,0)) 1",
@@ -179,14 +277,14 @@ export default function Home() {
               }
             >
               <motion.div
-                className="absolute -inset-4"
+                className="absolute -inset-1"
                 animate={{
                   opacity: hoveredLogo === "palast" ? 1 : 0,
                 }}
                 transition={{ duration: 0.3 }}
                 style={{
                   background:
-                    "linear-gradient(to right, rgba(220, 198, 133, 0.4), transparent 30%, transparent 70%, rgba(220, 198, 133, 0.4))",
+                    "linear-gradient(to right, rgba(220, 198, 133, 0.5), transparent 25%, transparent 75%, rgba(220, 198, 133, 0.3))",
                   pointerEvents: "none",
                 }}
               />
@@ -200,14 +298,14 @@ export default function Home() {
                 <img
                   src={imgPalastLogoSimple1}
                   alt="Palast Konditorei"
-                  className="h-40 lg:h-32 w-auto mb-4 object-contain"
+                  className="h-40 lg:h-32 w-auto object-contain"
                 />
               </motion.div>
             </motion.div>
 
-            {/* Lighthouse Restaurant */}
+            {/* Palmera */}
             <motion.div
-              className="flex flex-col items-center justify-center p-8 border-r cursor-pointer relative"
+              className="flex flex-col items-center justify-center p-8 border-b lg:border-b-0 lg:border-r cursor-pointer relative"
               style={{
                 borderImage:
                   "linear-gradient(to bottom, rgba(0,0,0,0), rgba(255,255,255,0.6), rgba(0,0,0,0)) 1",
@@ -216,6 +314,48 @@ export default function Home() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transitionDelay={{ delay: 0.2 }}
+              onMouseEnter={() => setHoveredLogo("palmera")}
+              onMouseLeave={() => setHoveredLogo(null)}
+              onClick={() => scrollToSection("palmera")}
+            >
+              <motion.div
+                className="absolute -inset-1"
+                animate={{
+                  opacity: hoveredLogo === "palmera" ? 1 : 0,
+                }}
+                transition={{ duration: 0.3 }}
+                style={{
+                  background:
+                    "linear-gradient(to right, rgba(242, 231, 213, 0.5), transparent 25%, transparent 75%, rgba(242, 231, 213, 0.3))",
+                  pointerEvents: "none",
+                }}
+              />
+              <motion.div
+                className="relative z-10"
+                animate={{
+                  y: hoveredLogo === "palmera" ? -12 : 0,
+                }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+              >
+                <img
+                  src={imgPalmeraSimple}
+                  alt="Palmera"
+                  className="h-40 lg:h-32 w-auto object-contain"
+                />
+              </motion.div>
+            </motion.div>
+
+            {/* Lighthouse Restaurant */}
+            <motion.div
+              className="flex flex-col items-center justify-center p-8 border-r lg:border-r cursor-pointer relative"
+              style={{
+                borderImage:
+                  "linear-gradient(to bottom, rgba(0,0,0,0), rgba(255,255,255,0.6), rgba(0,0,0,0)) 1",
+              }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transitionDelay={{ delay: 0.3 }}
               onMouseEnter={() =>
                 setHoveredLogo("lighthouse-restaurant")
               }
@@ -225,7 +365,7 @@ export default function Home() {
               }
             >
               <motion.div
-                className="absolute -inset-4"
+                className="absolute -inset-1"
                 animate={{
                   opacity:
                     hoveredLogo === "lighthouse-restaurant"
@@ -235,7 +375,7 @@ export default function Home() {
                 transition={{ duration: 0.3 }}
                 style={{
                   background:
-                    "linear-gradient(to right, rgba(3, 76, 60, 0.5), transparent 30%, transparent 70%, rgba(3, 76, 60, 0.5))",
+                    "linear-gradient(to right, rgba(3, 76, 60, 0.6), transparent 25%, transparent 75%, rgba(3, 76, 60, 0.4))",
                   pointerEvents: "none",
                 }}
               />
@@ -263,7 +403,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transitionDelay={{ delay: 0.3 }}
+              transitionDelay={{ delay: 0.4 }}
               onMouseEnter={() =>
                 setHoveredLogo("lighthouse-health")
               }
@@ -296,7 +436,7 @@ export default function Home() {
                 transition={{ duration: 0.3, ease: "easeOut" }}
               >
                 <img
-                  src={imgLighthouseHealthLogo}
+                  src={image_07e37c362ac1d9012705c3a22e2fb2d78e30d6f2}
                   alt="Lighthouse Health"
                   className="h-40 lg:h-32 w-auto object-contain"
                 />
@@ -308,13 +448,96 @@ export default function Home() {
 
       {/* Businesses Section */}
       <section
+        ref={businessesSectionRef}
         id="businesses"
-        className="py-16 sm:py-24 bg-gradient-to-b from-[#0A0B14] to-[#1a1b2e]"
+        className="py-16 sm:py-24 bg-gradient-to-b from-[#0A0B14] to-[#1a1b2e] relative overflow-hidden"
       >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Background Gradients */}
+        <div
+          className="absolute left-0 w-full pointer-events-none"
+          style={{
+            top: `${bauPosition}px`,
+            height: `${bauHeight}px`,
+          }}
+        >
+          <div
+            className="absolute top-0 left-0 w-full h-full"
+            style={{
+              background:
+                "radial-gradient(circle at center left, rgba(217, 39, 39, 0.25), transparent 70%), linear-gradient(to top, #0A0B14 0%, transparent 40%)",
+            }}
+          />
+        </div>
+
+        <div
+          className="absolute right-0 w-full pointer-events-none"
+          style={{
+            top: `${palastPosition}px`,
+            height: `${palastHeight}px`,
+          }}
+        >
+          <div
+            className="absolute top-0 right-0 w-full h-full"
+            style={{
+              background:
+                "radial-gradient(circle at center right, rgba(220, 198, 133, 0.25), transparent 70%), linear-gradient(to top, #0A0B14 0%, transparent 40%)",
+            }}
+          />
+        </div>
+
+        <div
+          className="absolute left-0 w-full pointer-events-none"
+          style={{
+            top: `${lighthouseRestaurantPosition}px`,
+            height: `${lighthouseRestaurantHeight}px`,
+          }}
+        >
+          <div
+            className="absolute top-0 left-0 w-full h-full"
+            style={{
+              background:
+                "radial-gradient(circle at center left, rgba(3, 76, 60, 0.25), transparent 70%), linear-gradient(to top, #0A0B14 0%, transparent 40%)",
+            }}
+          />
+        </div>
+
+        <div
+          className="absolute right-0 w-full pointer-events-none"
+          style={{
+            top: `${lighthouseHealthPosition}px`,
+            height: `${lighthouseHealthHeight}px`,
+          }}
+        >
+          <div
+            className="absolute top-0 right-0 w-full h-full"
+            style={{
+              background:
+                "radial-gradient(circle at center right, rgba(61, 43, 61, 0.25), transparent 100%), linear-gradient(to top, #0A0B14 0%, transparent 40%)",
+            }}
+          />
+        </div>
+
+        <div
+          className="absolute left-0 w-full pointer-events-none"
+          style={{
+            top: `${palmeraPosition}px`,
+            height: `${palmeraHeight}px`,
+          }}
+        >
+          <div
+            className="absolute top-0 left-0 w-full h-full"
+            style={{
+              background:
+                "radial-gradient(circle at center left, rgba(242, 231, 213, 0.25), transparent 100%), linear-gradient(to top, #0A0B14 0%, transparent 40%)",
+            }}
+          />
+        </div>
+
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="space-y-12 lg:space-y-16">
             {/* Hammer Bau */}
             <motion.div
+              ref={bauRef}
               id="hammer-bau"
               className="relative overflow-hidden rounded-2xl"
               initial={{ opacity: 0, y: 50 }}
@@ -344,20 +567,19 @@ export default function Home() {
 
                   <div className="flex-1">
                     <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4">
-                      Hammer Bau 87
+                      {t.businesses.hammerBau.title}
                     </h2>
                     <p className="text-white/70 mb-6 max-w-2xl text-sm sm:text-base">
-                      Lorem ipsum dolor sit amet, consectetur
-                      adipiscing elit. Fusce suscipit a leo
-                      blandit maximus. Vestibulum pulvinar
-                      ullamcorper sapien quis porttitor.
-                      Maecenas pulvinar nec lectus ac interdum.
-                      Curabitur aliquet lacus et mi imperdiet,
-                      eget porttitor neque placerat.
+                      {t.businesses.hammerBau.description}
                     </p>
 
                     <div className="flex gap-4">
-                      <button className="w-10 h-10 flex items-center justify-center rounded-full border border-white/20 hover:bg-white/10 transition-colors">
+                      <a
+                        href="https://www.hb87-web.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 flex items-center justify-center rounded-full border border-white/20 hover:bg-white/10 transition-colors"
+                      >
                         <svg
                           className="w-5 h-5"
                           fill="none"
@@ -371,8 +593,13 @@ export default function Home() {
                             strokeWidth="10"
                           />
                         </svg>
-                      </button>
-                      <button className="w-10 h-10 flex items-center justify-center rounded-full border border-white/20 hover:bg-white/10 transition-colors">
+                      </a>
+                      <a
+                        href="https://www.facebook.com/HammerBau87/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 flex items-center justify-center rounded-full border border-white/20 hover:bg-white/10 transition-colors"
+                      >
                         <svg
                           className="w-5 h-5"
                           fill="none"
@@ -386,8 +613,13 @@ export default function Home() {
                             strokeWidth="10"
                           />
                         </svg>
-                      </button>
-                      <button className="w-10 h-10 flex items-center justify-center rounded-full border border-white/20 hover:bg-white/10 transition-colors">
+                      </a>
+                      <a
+                        href="https://www.instagram.com/hammer.bau87/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 flex items-center justify-center rounded-full border border-white/20 hover:bg-white/10 transition-colors"
+                      >
                         <svg
                           className="w-5 h-5"
                           fill="none"
@@ -401,7 +633,7 @@ export default function Home() {
                             strokeWidth="10"
                           />
                         </svg>
-                      </button>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -410,6 +642,7 @@ export default function Home() {
 
             {/* Palast Konditorei */}
             <motion.div
+              ref={palastRef}
               id="palast-konditorei"
               className="relative overflow-hidden rounded-2xl"
               initial={{ opacity: 0, y: 50 }}
@@ -439,20 +672,19 @@ export default function Home() {
 
                   <div className="flex-1">
                     <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4">
-                      Palast Konditorei
+                      {t.businesses.palast.title}
                     </h2>
                     <p className="text-white/70 mb-6 max-w-2xl text-sm sm:text-base">
-                      Lorem ipsum dolor sit amet, consectetur
-                      adipiscing elit. Fusce suscipit a leo
-                      blandit maximus. Vestibulum pulvinar
-                      ullamcorper sapien quis porttitor.
-                      Maecenas pulvinar nec lectus ac interdum.
-                      Curabitur aliquet lacus et mi imperdiet,
-                      eget porttitor neque placerat.
+                      {t.businesses.palast.description}
                     </p>
 
                     <div className="flex gap-4">
-                      <button className="w-10 h-10 flex items-center justify-center rounded-full border border-white/20 hover:bg-white/10 transition-colors">
+                      <a
+                        href="https://www.palast-konditorei.de/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 flex items-center justify-center rounded-full border border-white/20 hover:bg-white/10 transition-colors"
+                      >
                         <svg
                           className="w-5 h-5"
                           fill="none"
@@ -466,8 +698,13 @@ export default function Home() {
                             strokeWidth="10"
                           />
                         </svg>
-                      </button>
-                      <button className="w-10 h-10 flex items-center justify-center rounded-full border border-white/20 hover:bg-white/10 transition-colors">
+                      </a>
+                      <a
+                        href="https://www.facebook.com/share/19tDw4abBi/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 flex items-center justify-center rounded-full border border-white/20 hover:bg-white/10 transition-colors"
+                      >
                         <svg
                           className="w-5 h-5"
                           fill="none"
@@ -481,8 +718,13 @@ export default function Home() {
                             strokeWidth="10"
                           />
                         </svg>
-                      </button>
-                      <button className="w-10 h-10 flex items-center justify-center rounded-full border border-white/20 hover:bg-white/10 transition-colors">
+                      </a>
+                      <a
+                        href="https://www.instagram.com/palastkonditorei"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 flex items-center justify-center rounded-full border border-white/20 hover:bg-white/10 transition-colors"
+                      >
                         <svg
                           className="w-5 h-5"
                           fill="none"
@@ -496,7 +738,21 @@ export default function Home() {
                             strokeWidth="10"
                           />
                         </svg>
-                      </button>
+                      </a>
+                      <a
+                        href="https://www.tiktok.com/@palast.konditorei"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 flex items-center justify-center rounded-full border border-white/20 hover:bg-white/10 transition-colors"
+                      >
+                        <svg
+                          className="w-5 h-5"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                        </svg>
+                      </a>
                     </div>
                   </div>
                 </div>
@@ -505,6 +761,7 @@ export default function Home() {
 
             {/* Lighthouse Restaurant */}
             <motion.div
+              ref={lighthouseRestaurantRef}
               id="lighthouse-restaurant"
               className="relative overflow-hidden rounded-2xl"
               initial={{ opacity: 0, y: 50 }}
@@ -526,7 +783,7 @@ export default function Home() {
                 <div className="flex flex-col sm:flex-row items-start gap-6">
                   <div className="bg-white p-6 rounded-xl flex-shrink-0">
                     <img
-                      src={imgLighthouseLogoTransparent}
+                      src={image_856a44a1156a10705253ff87d1d49e86bc09fcdf}
                       alt="Lighthouse Logo"
                       className="w-24 h-24 sm:w-32 sm:h-32 object-contain"
                     />
@@ -534,20 +791,22 @@ export default function Home() {
 
                   <div className="flex-1">
                     <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4">
-                      Lighthouse Restaurant
+                      {t.businesses.lighthouseRestaurant.title}
                     </h2>
                     <p className="text-white/70 mb-6 max-w-2xl text-sm sm:text-base">
-                      Lorem ipsum dolor sit amet, consectetur
-                      adipiscing elit. Fusce suscipit a leo
-                      blandit maximus. Vestibulum pulvinar
-                      ullamcorper sapien quis porttitor.
-                      Maecenas pulvinar nec lectus ac interdum.
-                      Curabitur aliquet lacus et mi imperdiet,
-                      eget porttitor neque placerat.
+                      {
+                        t.businesses.lighthouseRestaurant
+                          .description
+                      }
                     </p>
 
                     <div className="flex gap-4">
-                      <button className="w-10 h-10 flex items-center justify-center rounded-full border border-white/20 hover:bg-white/10 transition-colors">
+                      <a
+                        href="https://lighthouse-restaurant.de/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 flex items-center justify-center rounded-full border border-white/20 hover:bg-white/10 transition-colors"
+                      >
                         <svg
                           className="w-5 h-5"
                           fill="none"
@@ -561,7 +820,129 @@ export default function Home() {
                             strokeWidth="10"
                           />
                         </svg>
-                      </button>
+                      </a>
+                      <a
+                        href="https://www.instagram.com/lighthouse__resturant"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 flex items-center justify-center rounded-full border border-white/20 hover:bg-white/10 transition-colors"
+                      >
+                        <svg
+                          className="w-5 h-5"
+                          fill="none"
+                          viewBox="0 0 103 103"
+                        >
+                          <path
+                            d={svgPaths.p30812580}
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="10"
+                          />
+                        </svg>
+                      </a>
+                      <a
+                        href="https://www.facebook.com/profile.php?id=61573896891934"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 flex items-center justify-center rounded-full border border-white/20 hover:bg-white/10 transition-colors"
+                      >
+                        <svg
+                          className="w-5 h-5"
+                          fill="none"
+                          viewBox="0 0 103 103"
+                        >
+                          <path
+                            d={svgPaths.p27a2eec0}
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="10"
+                          />
+                        </svg>
+                      </a>
+                      <a
+                        href="https://www.tiktok.com/@lighthouse.berlin"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 flex items-center justify-center rounded-full border border-white/20 hover:bg-white/10 transition-colors"
+                      >
+                        <svg
+                          className="w-5 h-5"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Lighthouse Health */}
+            <motion.div
+              ref={lighthouseHealthRef}
+              id="lighthouse-health"
+              className="relative overflow-hidden rounded-2xl"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.6 }}
+              whileHover={{ scale: 1.02 }}
+            >
+              <div className="absolute inset-0">
+                <img
+                  src={imgHealthBackground}
+                  alt="Lighthouse Health Background"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
+              </div>
+
+              <div className="relative z-10 p-6 sm:p-8 lg:p-12">
+                <div className="flex flex-col sm:flex-row items-start gap-6">
+                  <div className="bg-white p-6 rounded-xl flex-shrink-0">
+                    <img
+                      src={imgLighthouseHealthLogo}
+                      alt="Lighthouse Health Logo"
+                      className="w-24 h-24 sm:w-32 sm:h-32 object-contain"
+                    />
+                  </div>
+
+                  <div className="flex-1">
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4">
+                      {t.businesses.lighthouseHealth.title}
+                    </h2>
+                    <p className="text-white/70 mb-6 max-w-2xl text-sm sm:text-base">
+                      {
+                        t.businesses.lighthouseHealth
+                          .description
+                      }
+                    </p>
+
+                    <div className="flex gap-4">
+                      <a
+                        href="http://lighthouse-health.de/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-10 h-10 flex items-center justify-center rounded-full border border-white/20 hover:bg-white/10 transition-colors"
+                      >
+                        <svg
+                          className="w-5 h-5"
+                          fill="none"
+                          viewBox="0 0 103 103"
+                        >
+                          <path
+                            d={svgPaths.p101abe80}
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="10"
+                          />
+                        </svg>
+                      </a>
                       <button className="w-10 h-10 flex items-center justify-center rounded-full border border-white/20 hover:bg-white/10 transition-colors">
                         <svg
                           className="w-5 h-5"
@@ -569,7 +950,7 @@ export default function Home() {
                           viewBox="0 0 103 103"
                         >
                           <path
-                            d={svgPaths.p358bd670}
+                            d={svgPaths.p3693fe80}
                             stroke="currentColor"
                             strokeLinecap="round"
                             strokeLinejoin="round"
@@ -583,9 +964,10 @@ export default function Home() {
               </div>
             </motion.div>
 
-            {/* Lighthouse Health */}
+            {/* Palmera */}
             <motion.div
-              id="lighthouse-health"
+              ref={palmeraRef}
+              id="palmera"
               className="relative overflow-hidden rounded-2xl"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -595,8 +977,8 @@ export default function Home() {
             >
               <div className="absolute inset-0">
                 <img
-                  src={imgLighthouseHealthBackground1}
-                  alt="Lighthouse Health Background"
+                  src={imgPalmeraBackground}
+                  alt="Palmera Background"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
@@ -606,24 +988,18 @@ export default function Home() {
                 <div className="flex flex-col sm:flex-row items-start gap-6">
                   <div className="bg-white p-6 rounded-xl flex-shrink-0">
                     <img
-                      src={imgLighthouseLogoTransparent}
-                      alt="Lighthouse Logo"
+                      src={imgPalmeraLogo}
+                      alt="Palmera Logo"
                       className="w-24 h-24 sm:w-32 sm:h-32 object-contain"
                     />
                   </div>
 
                   <div className="flex-1">
                     <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4">
-                      Lighthouse Health
+                      {t.businesses.palmera.title}
                     </h2>
                     <p className="text-white/70 mb-6 max-w-2xl text-sm sm:text-base">
-                      Lorem ipsum dolor sit amet, consectetur
-                      adipiscing elit. Fusce suscipit a leo
-                      blandit maximus. Vestibulum pulvinar
-                      ullamcorper sapien quis porttitor.
-                      Maecenas pulvinar nec lectus ac interdum.
-                      Curabitur aliquet lacus et mi imperdiet,
-                      eget porttitor neque placerat.
+                      {t.businesses.palmera.description}
                     </p>
 
                     <div className="flex gap-4">
@@ -634,7 +1010,7 @@ export default function Home() {
                           viewBox="0 0 103 103"
                         >
                           <path
-                            d={svgPaths.p101abe80}
+                            d={svgPaths.p30812580}
                             stroke="currentColor"
                             strokeLinecap="round"
                             strokeLinejoin="round"
@@ -649,7 +1025,7 @@ export default function Home() {
                           viewBox="0 0 103 103"
                         >
                           <path
-                            d={svgPaths.p3693fe80}
+                            d={svgPaths.p27a2eec0}
                             stroke="currentColor"
                             strokeLinecap="round"
                             strokeLinejoin="round"
@@ -679,26 +1055,29 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <img
-              src={imgLogoWhite}
-              alt="Nathim Abushedeq"
-              className="h-12 sm:h-16 lg:h-20 w-auto object-contain mb-6"
-            />
+            {/* <div
+              // className="h-12 sm:h-16 lg:h-20 flex items-center justify-center mb-6"
+              style={language === 'ar' ? { fontFamily: "Lalezar, sans-serif" } : {}}
+            > */}
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl text-center mb-6">
+              {t.contact.hero}
+            </h1>
+            {/* </div> */}
             <h2 className="text-3xl sm:text-4xl lg:text-5xl text-center">
-              Contact
+              {t.contact.title}
             </h2>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12 mb-12 max-w-md md:max-w-none mx-auto">
             {/* Headquarters */}
             <motion.div
-              className="text-center"
+              className="flex md:flex-col items-center gap-4 md:gap-0 text-center"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+              <div className="w-10 h-10 md:w-16 md:h-16 md:mb-4 flex items-center justify-center flex-shrink-0">
                 <svg
                   className="w-full h-full"
                   fill="none"
@@ -720,25 +1099,33 @@ export default function Home() {
                   />
                 </svg>
               </div>
-              <p className="text-xs text-white/60 mb-2">
-                Headquarters
-              </p>
-              <p className="text-sm sm:text-base">
-                Lessingstraße 10,
-                <br />
-                10555 Berlin
-              </p>
+              <div className="flex-1 md:flex-none">
+                <p className="text-xs text-white/60 mb-2">
+                  {t.contact.headquarters}
+                </p>
+                <p className="text-sm sm:text-base">
+                  <a
+                    href="https://maps.app.goo.gl/tkW2E1TjFR8roPH9A"
+                    className="text-sm sm:text-base hover:text-white/80 transition-colors"
+                    target="_blank"
+                  >
+                    Lessingstraße 10,
+                    <br />
+                    10555 Berlin
+                  </a>
+                </p>
+              </div>
             </motion.div>
 
             {/* Email */}
             <motion.div
-              className="text-center"
+              className="flex md:flex-col items-center gap-4 md:gap-0 text-center"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+              <div className="w-10 h-10 md:w-16 md:h-16 md:mb-4 flex items-center justify-center flex-shrink-0">
                 <svg
                   className="w-full h-full"
                   fill="none"
@@ -753,26 +1140,28 @@ export default function Home() {
                   />
                 </svg>
               </div>
-              <p className="text-xs text-white/60 mb-2">
-                E-Mail Address
-              </p>
-              <a
-                href="mailto:n.abushedeq@gmail.com"
-                className="text-sm sm:text-base hover:text-white/80 transition-colors"
-              >
-                n.abushedeq@gmail.com
-              </a>
+              <div className="flex-1 md:flex-none">
+                <p className="text-xs text-white/60 mb-2">
+                  {t.contact.email}
+                </p>
+                <a
+                  href="mailto:n.abushedeq@gmail.com"
+                  className="text-sm sm:text-base hover:text-white/80 transition-colors"
+                >
+                  n.abushedeq@gmail.com
+                </a>
+              </div>
             </motion.div>
 
             {/* Phone */}
             <motion.div
-              className="text-center"
+              className="flex md:flex-col items-center gap-4 md:gap-0 text-center"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+              <div className="w-10 h-10 md:w-16 md:h-16 md:mb-4 flex items-center justify-center flex-shrink-0">
                 <svg
                   className="w-full h-full"
                   fill="none"
@@ -787,12 +1176,19 @@ export default function Home() {
                   />
                 </svg>
               </div>
-              <p className="text-xs text-white/60 mb-2">
-                Phone Number
-              </p>
-              <p className="text-sm sm:text-base">
-                +49 176 5544-4445
-              </p>
+              <div className="flex-1 md:flex-none">
+                <p className="text-xs text-white/60 mb-2">
+                  {t.contact.phone}
+                </p>
+                <p className="text-sm sm:text-base">
+                  <a
+                    href="tel:+4917655444445"
+                    className="text-sm sm:text-base hover:text-white/80 transition-colors"
+                  >
+                    +49 176 5544-4445
+                  </a>
+                </p>
+              </div>
             </motion.div>
           </div>
 
@@ -860,9 +1256,9 @@ export default function Home() {
               />
             </motion.a>
 
-            {/* Facebook (Politics) */}
+            {/* Facebook */}
             <motion.a
-              href="https://www.facebook.com/Abushedeq"
+              href="https://www.facebook.com/nathme.Abushedeq"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 transition-colors"
