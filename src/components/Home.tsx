@@ -1145,10 +1145,10 @@ export default function Home() {
                   {t.contact.email}
                 </p>
                 <a
-                  href="mailto:n.abushedeq@gmail.com"
+                  href="mailto:nathmi@abushedeq.de"
                   className="text-sm sm:text-base hover:text-white/80 transition-colors"
                 >
-                  n.abushedeq@gmail.com
+                  nathmi@abushedeq.de
                 </a>
               </div>
             </motion.div>
