@@ -21,7 +21,7 @@ export const translations = {
       palast: {
         title: "Palast Konditorei",
         description:
-          "Handgefertigte orientalische Süßwaren nach authentischen Familienrezepten. Unsere Konditorei vereint jahrhundertealte Tradition mit höchster Qualität – jedes Baklava, jede Kunafa ein Meisterwerk. Wir expandieren kontinuierlich, um noch mehr Menschen die Freude an echtem Handwerk und unverfälschtem Geschmack zu bringen.",
+          "In 5 Berliner Filialen handgefertigte orientalische Süßwaren nach authentischem Familienrezept. Unsere Konditorei vereint jahrhundertealte Tradition mit höchster Qualität – jedes Baklava, jede Kunafa ein Meisterwerk. Wir expandieren kontinuierlich, um noch mehr Menschen die Freude an echtem Handwerk und unverfälschtem Geschmack zu bringen.",
       },
       lighthouseRestaurant: {
         title: "Lighthouse Restaurant",
@@ -87,7 +87,7 @@ export const translations = {
       palast: {
         title: "Palast Konditorei",
         description:
-          "Handcrafted oriental sweets following authentic family recipes. Our confectionery combines centuries-old tradition with the highest quality – every baklava, every kunafa a masterpiece. We are continuously expanding to bring more people the joy of genuine craftsmanship and pure taste.",
+          "Handcrafted oriental sweets made according to authentic family recipes in our five Berlin branches. Our confectionery combines centuries-old tradition with the highest quality – every baklava, every kunafa a masterpiece. We are continuously expanding to bring the joy of genuine craftsmanship and authentic flavor to even more people.",
       },
       lighthouseRestaurant: {
         title: "Lighthouse Restaurant",
@@ -152,7 +152,7 @@ export const translations = {
       palast: {
         title: "حلويات القصر الشامي",
         description:
-          "حلويات شرقية مصنوعة يدوياً وفقاً لوصفات عائلية أصيلة. تجمع الكوندتوريا لدينا بين التقاليد القديمة وأعلى جودة – كل بقلاوة، كل كنافة تحفة فنية. نتوسع باستمرار لنجلب لمزيد من الناس متعة الحرفية الحقيقية والطعم الأصيل.",
+          "حلويات شرقية مصنوعة يدويًا وفقًا لوصفات عائلية أصيلة في فروعنا الخمسة ببرلين. يجمع حلوياتنا بين تقاليد عريقة وأعلى مستويات الجودة - كل بقلاوة وكل كنافة تحفة فنية. نتوسع باستمرار لنقدم متعة الحرفية الأصيلة والنكهة الأصيلة لأكبر عدد من الناس.",
       },
       lighthouseRestaurant: {
         title: "مطعم لايت هاوس",
