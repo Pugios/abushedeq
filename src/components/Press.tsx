@@ -1,7 +1,7 @@
 import { motion } from "motion/react";
 import { useRef, useState, useEffect } from "react";
-import imgHammerBauLogo from "figma:asset/070b048162e54b55e805df413fcf394b9a20f33b.png";
-import imgPalastKonditoreiLogo from "figma:asset/4695992f5b4bd9028582c951749270da9e386436.png";
+import imgHBSquare from "../assets/hbSquare.png";
+import imgPKSquare from "../assets/pkSquare.png";
 import { useLanguage } from "./LanguageContext";
 import { translations } from "../translations";
 
@@ -81,7 +81,7 @@ export default function Press() {
           <div className="flex items-center gap-4 mb-8">
             <div className="bg-white p-4 rounded-lg">
               <img
-                src={imgHammerBauLogo}
+                src={imgHBSquare}
                 alt="Hammer Bau"
                 className="h-16 w-auto object-contain"
               />
@@ -229,7 +229,7 @@ export default function Press() {
           <div className="flex items-center gap-4 mb-8">
             <div className="bg-white p-4 rounded-lg">
               <img
-                src={imgPalastKonditoreiLogo}
+                src={imgPKSquare}
                 alt="Palast Konditorei"
                 className="h-16 w-auto object-contain"
               />

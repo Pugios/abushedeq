@@ -1,27 +1,32 @@
-import image_856a44a1156a10705253ff87d1d49e86bc09fcdf from 'figma:asset/856a44a1156a10705253ff87d1d49e86bc09fcdf.png';
-import image_333aa5d64fc9818b1215771a921d3c9eed9c062c from 'figma:asset/333aa5d64fc9818b1215771a921d3c9eed9c062c.png';
-import image_07e37c362ac1d9012705c3a22e2fb2d78e30d6f2 from 'figma:asset/07e37c362ac1d9012705c3a22e2fb2d78e30d6f2.png';
+// import imgHero from "../assets/Hero.png";
+import imgHero from "../assets/Hero2.jpeg";
+
+import imgPalmeraSimple from "../assets/palSimple.png";
+import imgLHHSimple from "../assets/lhhSimple.png";
+import imgHBSimple from "../assets/hbSimple.png";
+import imgLHRSimple from "../assets/lhrSimple.png";
+import imgPKSimple from "../assets/pkSimple.png";
+
+import imgHBLogo from "../assets/hbLogo.png";
+import imgHBBackground from "../assets/hbBackground.png";
+
+import imgPKLogo from "../assets/pkLogo.png";
+import imgPKBackground from "../assets/pkBackground.png";
+
+import imgLHRLogo from '../assets/lhrLogo.png';
+import imgLHRBackground from "../assets/lhrBackground.png";
+
+import imgLHHLogo from "../assets/lhhLogo.png";
+import imgLHHBackground from "../assets/lhhBackground.png";
+
+import imgPalmeraLogo from "../assets/palLogo.png";
+import imgPalmeraBackground from "../assets/palBackground.png";
+
 import svgPaths from "../imports/svg-vymn29r931";
-import imgXWhite1 from "figma:asset/662e8955d5edb34e5342261bd0eec3b02b95bff7.png";
-import imgThreads1 from "figma:asset/9b5bb1248641f95cee6a86708cce08dca7f794f7.png";
-import imgLighthouseHealthBackground1 from "figma:asset/a1fddef95643b9ae7080eb6de54c9af87d3ca370.png";
-import imgLighthouseLogoTransparent from "figma:asset/6905d61d2ecd2a873002ad4583be2d7858b3c72c.png";
-import imgLighthouseRestaurantBackground1 from "figma:asset/6606f5cbef21e79f5ffc008a99ecd3278f53cbff.png";
-import imgPalastBackground1 from "figma:asset/fe077557d12d477631eb5972b57eb23318c4adc1.png";
-import imgPalastKondi from "figma:asset/e0d17e6f6e90561d4b149177ab09826a742f3e8f.png";
-import imgBauBackground1 from "figma:asset/54e0fc7350ee6c2fe33b83952f1930951b3079cc.png";
-import imgHammerBau from "figma:asset/1d8605050492947cec24948fe5365456752242b2.png";
-import imgBauSimple1 from "figma:asset/95a58fe660456dbe84f08b65c5a0cc4475f64daf.png";
-import imgPalastLogoSimple1 from "figma:asset/48b2115b05a13022b596082182896f54c2651e9c.png";
-import imgLighthouseRestaurantLogo from "figma:asset/8ddc159fda6f536fb9d9fcdb5cd6fc257b49249b.png";
-import imgLighthouseHealthLogo from "figma:asset/333aa5d64fc9818b1215771a921d3c9eed9c062c.png";
-import imgLighthouseHealthLogoWhite from "figma:asset/11f165bc39c13c4b14c2d73f50bcf6b83e76d93c.png";
-import imgPalmeraLogo from "figma:asset/6dcddd0fa33034b51698b2775de79f1fe9aa6356.png";
-import imgPalmeraSimple from "figma:asset/760901b4b48b95a944e1aa6a0fe6e160229946be.png";
-import imgPalmeraBackground from "figma:asset/c18ab45d95d35e1a7534083046d425e6cf6c36cd.png";
-import imgSuit2 from "figma:asset/29607a3d91472bd3358dff7b1ca841d4d551ecc0.png";
-import imgLogoWhite from "figma:asset/844a0b69883f8961b18f27beb99fb5fddc426fa1.png";
-import imgHealthBackground from "figma:asset/996b71244e0bec2d2b0c2fe93b209665187f7aec.png";
+import imgX from "../assets/x.png";
+import imgThreads from "../assets/threads.png";
+
+import imgNathmiArabic from "../assets/nathmiArabic.png";
 
 import { useState, useRef, useEffect } from "react";
 import { motion } from "motion/react";
@@ -201,7 +206,7 @@ export default function Home() {
                   }}
                 />
                 <img
-                  src={imgSuit2}
+                  src={imgHero}
                   alt="Nathim Abushedeq"
                   className="relative z-10 w-full h-full object-contain rounded-lg"
                 />
@@ -252,7 +257,7 @@ export default function Home() {
                 transition={{ duration: 0.3, ease: "easeOut" }}
               >
                 <img
-                  src={imgBauSimple1}
+                  src={imgHBSimple}
                   alt="Hammer Bau"
                   className="h-40 lg:h-32 w-auto object-contain"
                 />
@@ -296,7 +301,7 @@ export default function Home() {
                 transition={{ duration: 0.3, ease: "easeOut" }}
               >
                 <img
-                  src={imgPalastLogoSimple1}
+                  src={imgPKSimple}
                   alt="Palast Konditorei"
                   className="h-40 lg:h-32 w-auto object-contain"
                 />
@@ -390,7 +395,7 @@ export default function Home() {
                 transition={{ duration: 0.3, ease: "easeOut" }}
               >
                 <img
-                  src={imgLighthouseRestaurantLogo}
+                  src={imgLHRSimple}
                   alt="Lighthouse Restaurant"
                   className="h-40 lg:h-32 w-auto object-contain"
                 />
@@ -436,7 +441,7 @@ export default function Home() {
                 transition={{ duration: 0.3, ease: "easeOut" }}
               >
                 <img
-                  src={image_07e37c362ac1d9012705c3a22e2fb2d78e30d6f2}
+                  src={imgLHHSimple}
                   alt="Lighthouse Health"
                   className="h-40 lg:h-32 w-auto object-contain"
                 />
@@ -548,7 +553,7 @@ export default function Home() {
             >
               <div className="absolute inset-0">
                 <img
-                  src={imgBauBackground1}
+                  src={imgHBBackground}
                   alt="Hammer Bau Background"
                   className="w-full h-full object-cover"
                 />
@@ -559,7 +564,7 @@ export default function Home() {
                 <div className="flex flex-col sm:flex-row items-start gap-6">
                   <div className="bg-white p-6 rounded-xl flex-shrink-0">
                     <img
-                      src={imgHammerBau}
+                      src={imgHBLogo}
                       alt="Hammer Bau Logo"
                       className="w-24 h-24 sm:w-32 sm:h-32 object-contain"
                     />
@@ -653,7 +658,7 @@ export default function Home() {
             >
               <div className="absolute inset-0">
                 <img
-                  src={imgPalastBackground1}
+                  src={imgPKBackground}
                   alt="Palast Background"
                   className="w-full h-full object-cover"
                 />
@@ -664,7 +669,7 @@ export default function Home() {
                 <div className="flex flex-col sm:flex-row items-start gap-6">
                   <div className="bg-white p-6 rounded-xl flex-shrink-0">
                     <img
-                      src={imgPalastKondi}
+                      src={imgPKLogo}
                       alt="Palast Konditorei Logo"
                       className="w-24 h-24 sm:w-32 sm:h-32 object-contain"
                     />
@@ -772,7 +777,7 @@ export default function Home() {
             >
               <div className="absolute inset-0">
                 <img
-                  src={imgLighthouseRestaurantBackground1}
+                  src={imgLHRBackground}
                   alt="Lighthouse Restaurant Background"
                   className="w-full h-full object-cover"
                 />
@@ -783,7 +788,7 @@ export default function Home() {
                 <div className="flex flex-col sm:flex-row items-start gap-6">
                   <div className="bg-white p-6 rounded-xl flex-shrink-0">
                     <img
-                      src={image_856a44a1156a10705253ff87d1d49e86bc09fcdf}
+                      src={imgLHRLogo}
                       alt="Lighthouse Logo"
                       className="w-24 h-24 sm:w-32 sm:h-32 object-contain"
                     />
@@ -894,7 +899,7 @@ export default function Home() {
             >
               <div className="absolute inset-0">
                 <img
-                  src={imgHealthBackground}
+                  src={imgLHHBackground}
                   alt="Lighthouse Health Background"
                   className="w-full h-full object-cover"
                 />
@@ -905,7 +910,7 @@ export default function Home() {
                 <div className="flex flex-col sm:flex-row items-start gap-6">
                   <div className="bg-white p-6 rounded-xl flex-shrink-0">
                     <img
-                      src={imgLighthouseHealthLogo}
+                      src={imgLHHLogo}
                       alt="Lighthouse Health Logo"
                       className="w-24 h-24 sm:w-32 sm:h-32 object-contain"
                     />
@@ -1234,7 +1239,7 @@ export default function Home() {
               whileTap={{ scale: 0.95 }}
             >
               <img
-                src={imgXWhite1}
+                src={imgX}
                 alt="X"
                 className="w-5 h-5"
               />
@@ -1250,7 +1255,7 @@ export default function Home() {
               whileTap={{ scale: 0.95 }}
             >
               <img
-                src={imgThreads1}
+                src={imgThreads}
                 alt="Threads"
                 className="w-5 h-5"
               />

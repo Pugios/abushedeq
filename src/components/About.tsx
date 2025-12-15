@@ -3,42 +3,8 @@ import { useLanguage } from "./LanguageContext";
 import { translations } from "../translations";
 import { useEffect, useRef, useState } from "react";
 import svgPaths from "../imports/svg-vymn29r931";
-import imgXWhite1 from "figma:asset/662e8955d5edb34e5342261bd0eec3b02b95bff7.png";
-import imgThreads1 from "figma:asset/9b5bb1248641f95cee6a86708cce08dca7f794f7.png";
-import imgAbout1 from "figma:asset/73f002c0922cc62ec050c3206f7f9cc55071ba51.png";
-import imgAbout2 from "figma:asset/9735fc06c6be9bc2e6fd6a76bb993fa4d4719ae1.png";
-import imgAbout3 from "figma:asset/bb36337a7fa320df680f06ba7e71acc7fba5d71b.png";
-import imgAbout4 from "figma:asset/567734555db2157f568b68f9cbeb73ba6e52d7dc.png";
-import imgAbout5 from "figma:asset/ec0dfa88c4277d557a503feba61c32af1b581822.png";
-import imgAbout6 from "figma:asset/5f0be8e27aef3030b216b677842c54ff43364073.png";
-import imgAbout7 from "figma:asset/2e00c361191a8a93fa6fceea3fcd08ca3b5283c0.png";
-import imgAbout8 from "figma:asset/b0719d1521cad1e15b646cd90fa0a84ac4fdfc6a.png";
-import imgAbout9 from "figma:asset/4e62cb119426f69e882baeec5a10989ecb9ec7d7.png";
-import imgAbout10 from "figma:asset/f3548483a64076cb847028f98bef6d9e696f3a13.png";
-import imgAbout11 from "figma:asset/9221246daa8885186a91c7c6623d485802c7b6af.png";
-import imgAbout12 from "figma:asset/3ac4245613d71c7adcb83a11689cb7d83ec8f2e7.png";
-import imgAbout13 from "figma:asset/47f8f81ea407422800e0288e8262c71817984797.png";
-import imgAbout14 from "figma:asset/b03dd35810afd2fc842ec3370270df3a7e895efc.png";
-import imgAbout15 from "figma:asset/8407ab5e63dbc055b8763dedcfb3eaaf2098b4d8.png";
-import imgAbout16 from "figma:asset/be672b3da518b0471090a33d8b4bb2b025bbb244.png";
-import imgAbout17 from "figma:asset/5c420566839f4fd3e7a8a3369938e362d8bb7a54.png";
-import imgAbout18 from "figma:asset/6d70d28a8667810c73686e58fa24737bc53349a7.png";
-import imgAbout19 from "figma:asset/5909d47715f7268369824bfcafd97e7cfd89e24c.png";
-import imgAbout20 from "figma:asset/3e135426aeb4f304c550aae9cd4d20e93bcd4944.png";
-import imgAbout21 from "figma:asset/7c1c9bb735c9e0c33afa3c181dac519d006a1f61.png";
-import imgAbout22 from "figma:asset/67457d513eacffdd82dadc6967dc74e829af11bf.png";
-import imgAbout23 from "figma:asset/9172b20b872926803493ee8e0e2d39bd0b6d055a.png";
-import imgAbout24 from "figma:asset/eaa6c7f7fe91480013b7d1d8a5c9abeb7faaaada.png";
-import imgAbout25 from "figma:asset/999f282e741e784a61349bbb131f6eaeec654414.png";
-import imgAbout26 from "figma:asset/dda47c87926a74b7d55002c0aa18412b00c46c6e.png";
-import imgAbout27 from "figma:asset/d17ec63d406f525eaab8a650ab9946b025686f4f.png";
-import imgAbout28 from "figma:asset/9e0515058f77cf3f4f438011fa3bac8293b4bc1d.png";
-import imgAbout29 from "figma:asset/d2549f624f13f43e9d61e97d6ce10ddcf057a801.png";
-import imgAbout30 from "figma:asset/8cdc3fad7018e9e7640aa575d5e40892a9e6fdb8.png";
-import imgAbout31 from "figma:asset/f88ccb439c12ce20553f43cb2cf5c98c5bf72d7c.png";
-import imgAbout32 from "figma:asset/a909e7110cbcb98d75d0b1f3b08f51347a4709bd.png";
-import imgAbout33 from "figma:asset/63dc94c1c3bf9c79eda170f765d04b1610f1b68e.png";
-import imgAbout34 from "figma:asset/e0f1b47e6a6d3e137ef4b88cc75c4bfced51f84e.png";
+import imgX from "../assets/x.png";
+import imgThreads from "../assets/threads.png";
 
 export default function About() {
   const { language } = useLanguage();
@@ -56,42 +22,8 @@ export default function About() {
   const dragDistanceRef = useRef(0);
 
   // Gallery images - personal photos only
-  const allImages = [
-    imgAbout1,
-    imgAbout2,
-    imgAbout3,
-    imgAbout4,
-    imgAbout5,
-    imgAbout6,
-    imgAbout7,
-    imgAbout8,
-    imgAbout9,
-    imgAbout10,
-    imgAbout11,
-    imgAbout12,
-    imgAbout13,
-    imgAbout14,
-    imgAbout15,
-    imgAbout16,
-    imgAbout17,
-    imgAbout18,
-    imgAbout19,
-    imgAbout20,
-    imgAbout21,
-    imgAbout22,
-    imgAbout23,
-    imgAbout24,
-    imgAbout25,
-    imgAbout26,
-    imgAbout27,
-    imgAbout28,
-    imgAbout29,
-    imgAbout30,
-    imgAbout31,
-    imgAbout32,
-    imgAbout33,
-    imgAbout34,
-  ];
+  const imageModules = import.meta.glob('../assets/carousel/*', { eager: true });
+  const allImages = Object.values(imageModules).map((mod: any) => mod.default);
 
   // Duplicate all images for seamless infinite scroll
   const galleryImages = [...allImages, ...allImages];
@@ -329,7 +261,7 @@ export default function About() {
               whileTap={{ scale: 0.95 }}
             >
               <img
-                src={imgXWhite1}
+                src={imgX}
                 alt="X"
                 className="w-5 h-5"
               />
@@ -345,7 +277,7 @@ export default function About() {
               whileTap={{ scale: 0.95 }}
             >
               <img
-                src={imgThreads1}
+                src={imgThreads}
                 alt="Threads"
                 className="w-5 h-5"
               />
