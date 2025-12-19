@@ -2,9 +2,9 @@ import { motion } from "motion/react";
 import { useLanguage } from "./LanguageContext";
 import { translations } from "../translations";
 import { useEffect, useRef, useState } from "react";
-import svgPaths from "../imports/svg-vymn29r931";
-import imgX from "../assets/x.png";
-import imgThreads from "../assets/threads.png";
+import svgPaths from "../assets/icons/svg-vymn29r931";
+import imgX from "../assets/icons/x.png";
+import imgThreads from "../assets/icons/threads.png";
 
 export default function About() {
   const { language } = useLanguage();
