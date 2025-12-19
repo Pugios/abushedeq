@@ -242,7 +242,7 @@ export default function About() {
                 viewBox="0 0 103 103"
               >
                 <path
-                  d={svgPaths.p30812580}
+                  d={svgPaths.instagram.path}
                   stroke="white"
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -298,7 +298,7 @@ export default function About() {
                 viewBox="0 0 108 108"
               >
                 <path
-                  d={svgPaths.p27a2eec0}
+                  d={svgPaths.facebook.path}
                   stroke="white"
                   strokeLinecap="round"
                   strokeLinejoin="round"
