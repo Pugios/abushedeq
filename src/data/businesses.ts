@@ -18,6 +18,9 @@ import imgPalmeraLogo from "../assets/palLogo.png";
 import imgPalmeraBackground from "../assets/palBackground.png";
 import imgPalmeraSimple from "../assets/palSimple.png";
 
+import imgMSLogo from "../assets/msLogo.png";
+import imgMSBackground from "../assets/msBackground.jpeg";
+import imgMSSimple from "../assets/msSimple.png";
 
 import tiktokIcon from "../assets/icons/tiktok.png";
 
@@ -89,8 +92,21 @@ export const businesses = (t: any) => [
     simple: imgPalmeraSimple,
     color: `rgba(242, 231, 213, 0.5)`,
     socials: [
-        { href: "https://www.facebook.com/", icon: svgPaths.facebook },
-        { href: "https://www.instagram.com/", icon: svgPaths.instagram }
+        { href: "", icon: svgPaths.facebook },
+        { href: "", icon: svgPaths.instagram }
+    ],
+  },
+  {
+    id: "mrstyle",
+    title: t.businesses.mrstyle.title,
+    description: t.businesses.mrstyle.description,
+    backgroundImage: imgMSBackground,
+    logo: imgMSLogo,
+    simple: imgMSSimple,
+    color: `rgba(255, 145, 0, 0.5)`,
+    socials: [
+        { href: "", icon: svgPaths.facebook },
+        { href: "", icon: svgPaths.instagram }
     ],
   }
 ];

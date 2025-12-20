@@ -38,6 +38,11 @@ export const translations = {
         description:
           "Ein wachsendes Gastronomiekonzept, das Innovation und Tradition vereint. Palmera steht für gehobene Küche mit mediterranem Flair und erstklassigen Service. Wir expandieren stetig und schaffen neue kulinarische Erlebnisse, die Gäste begeistern und Maßstäbe setzen.",
       },
+      mrstyle: {
+        title: "Mr. Style",
+        description:
+          "Mr. Style ist ein Ort, an dem Stil auf Genuss trifft. Neben präziser, moderner Barbierkunst erwartet die Gäste eine erlesene Auswahl an handgefertigten Süßigkeiten – ein einzigartiges Erlebnis, das Pflege, Gastfreundschaft und Geschmack vereint. Mr. Style steht für Qualität und ein besonderes Ambiente und lädt Sie ein, in diesem einladenden Raum zur Ruhe zu kommen, Ihren Look aufzufrischen und sich etwas Gutes zu tun.",
+      },
     },
     contact: {
       hero: "Nathmi Abushedeq",
@@ -104,6 +109,11 @@ export const translations = {
         description:
           "A growing gastronomy concept that unites innovation and tradition. Palmera stands for upscale cuisine with Mediterranean flair and first-class service. We are steadily expanding, creating new culinary experiences that inspire guests and set standards.",
       },
+      mrstyle: {
+        title: "Mr. Style",
+        description:
+          "Mr. Style is a place where style meets indulgence. Alongside precise, modern barber craftsmanship, guests can enjoy a curated selection of handcrafted sweets, creating a unique experience that blends grooming, hospitality, and taste. Rooted in quality and atmosphere, Mr. Style invites you to slow down, refresh your look, and treat yourself in one welcoming space."
+      }
     },
     contact: {
       hero: "Nathmi Abushedeq",
@@ -169,6 +179,11 @@ export const translations = {
         description:
           "مفهوم تذوق متنامٍ يجمع بين الابتكار والتقاليد. تمثل بالميرا المطبخ الراقي مع ذوق البحر الأبيض المتوسط وخدمة من الدرجة الأولى. نتوسع بشكل مستمر، ونخلق تجارب طهوية جديدة تلهم الضيوف وتضع المعايير.",
       },
+      mrstyle: {
+        title: "السيد ستايل",
+        description:
+          "مستر ستايل هو مكانٌ يلتقي فيه الأناقة بالمتعة. فإلى جانب حرفية الحلاقة العصرية الدقيقة، يمكن للضيوف الاستمتاع بتشكيلة مختارة من الحلويات المصنوعة يدويًا، مما يخلق تجربة فريدة تجمع بين العناية الشخصية والضيافة الراقية والمذاق الرائع. انطلاقًا من الجودة والأجواء المميزة، يدعوك مستر ستايل للاسترخاء وتجديد إطلالتك وتدليل نفسك في مكانٍ دافئ ومريح."
+      }
     },
     contact: {
       hero: "نظمي أبو شدق",
