@@ -19,7 +19,7 @@ export default function LogoCloudCard({
 
     return (
         <motion.div
-            className="flex flex-col items-center justify-center p-8 border-r border-b lg:border-b-0 cursor-pointer relative"
+            className="flex flex-col items-center justify-center p-8 border-r border-l border-b lg:border-b-0 cursor-pointer relative"
             style={{
                 borderImage:
                     "linear-gradient(to bottom, rgba(0,0,0,0), rgba(255,255,255,0.6), rgba(0,0,0,0)) 1",
