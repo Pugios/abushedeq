@@ -18,14 +18,14 @@ export default function HeroSection({
           className="absolute inset-0"
           style={{
             background: `
-              linear-gradient(to right, rgba(238, 42, 53, 0.4), transparent 50%, rgba(10, 11, 20, 0.8)),
-              linear-gradient(to bottom, rgba(10, 11, 20, 0.8), rgba(10, 11, 20, 0.8), rgba(0, 151, 54, 0.4))
+              linear-gradient(to right, rgba(42, 55, 238, 0.4), transparent 50%, rgba(10, 11, 20, 0.8)),
+              linear-gradient(to bottom, rgba(10, 11, 20, 0.8), rgba(10, 11, 20, 0.8), rgba(211, 211, 211, 0.4))
             `,
           }}
         />
 
         <div className="relative z-10 w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-12 xl:px-16">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-16 xl:gap-24">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-0 xl:gap-0">
             <motion.div
               className="flex-1 text-right order-2 lg:order-1"
               initial={{ opacity: 0, x: -50 }}
@@ -65,7 +65,7 @@ export default function HeroSection({
             </motion.div>
 
             <motion.div
-              className="flex-1 flex justify-center lg:justify-end order-1 lg:order-2"
+              className="flex-1 flex justify-center lg:justify-start order-1 lg:order-2"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, ease: "easeOut" }}

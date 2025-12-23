@@ -1,5 +1,5 @@
 import { useLanguage } from "./LanguageContext";
-import { translations } from "../translations";
+import { translations } from "../data/translations";
 
 import HeroSection from "./sections/HeroSection";
 import BusinessSection from "./sections/BusinessSection";

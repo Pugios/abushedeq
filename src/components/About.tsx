@@ -1,6 +1,6 @@
 import { motion } from "motion/react";
 import { useLanguage } from "./LanguageContext";
-import { translations } from "../translations";
+import { translations } from "../data/translations";
 import { useEffect, useRef, useState } from "react";
 import svgPaths from "../assets/icons/svg-vymn29r931";
 import imgX from "../assets/icons/x.png";

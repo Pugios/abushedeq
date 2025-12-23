@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
-import { translations } from "../../translations";
+import { translations } from "../../data/translations";
 import { useLanguage } from "../LanguageContext";
 import { Menu, X } from "lucide-react";
 import { motion } from "motion/react";

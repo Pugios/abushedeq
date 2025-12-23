@@ -1,5 +1,5 @@
 import { useLanguage } from "../LanguageContext";
-import { translations } from "../../translations";
+import { translations } from "../../data/translations";
 
 export default function Footer() {
   const { language } = useLanguage();

@@ -3,7 +3,7 @@ import { useRef, useState, useEffect } from "react";
 import imgHBSquare from "../assets/hbSquare.png";
 import imgPKSquare from "../assets/pkSquare.png";
 import { useLanguage } from "./LanguageContext";
-import { translations } from "../translations";
+import { translations } from "../data/translations";
 
 export default function Press() {
   const { language } = useLanguage();
