@@ -25,16 +25,8 @@ export default function BusinessSection({
             "[data-glow-anchor]"
         );
 
-        console.log("Anchors: ", anchors);
-
         anchors.forEach((anchor, i) => {
             const rect = anchor.getBoundingClientRect();
-
-            console.log(
-                "anchor:",
-                anchor.dataset.glowAnchor,
-                rect
-            );
 
             if (rect.height === 0) return;
 

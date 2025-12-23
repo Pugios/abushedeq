@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 
-import imgHero from "../../assets/Hero2.jpeg";
+// import imgHero from "../../assets/Hero2.jpeg";
+import imgHero from "../../assets/nathmi_clean_cropped.jpg";
 
 type Props = {
     t: any,
@@ -70,21 +71,9 @@ export default function HeroSection({
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
               <div className="relative w-80 h-80 sm:w-96 sm:h-96 md:w-[500px] md:h-[500px] lg:w-[600px] lg:h-[600px] xl:w-[700px] xl:h-[700px]">
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent rounded-lg"
-                  animate={{
-                    scale: [1, 1.02, 1],
-                    opacity: [0.5, 0.7, 0.5],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                />
                 <img
                   src={imgHero}
-                  alt="Nathim Abushedeq"
+                  alt="Nathmi Abushedeq"
                   className="relative z-10 w-full h-full object-contain rounded-lg"
                 />
               </div>
