@@ -68,7 +68,7 @@ export const businesses = (t: any) => [
       { href: "https://lighthouse-restaurant.de/", icon: svgPaths.link },
       { href: "https://www.facebook.com/profile.php?id=61573896891934", icon: svgPaths.facebook },
       { href: "https://www.instagram.com/lighthouse__resturant/", icon: svgPaths.instagram },
-      { href: "https://www.tiktok.com/@lighthouse.berlin", icon: tiktokIcon }
+      { href: "https://www.tiktok.com/@lighthouse.berlin", icon: svgPaths.tiktok }
     ],
   },
   {
