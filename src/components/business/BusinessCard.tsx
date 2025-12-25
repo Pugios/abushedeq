@@ -16,9 +16,7 @@ type Props = {
     description: string;
     backgroundImage: string;
     logo: string;
-    color: string;
     socials: SocialLink[];
-    iteration: number;
 };
 
 export default function BusinessCard({
@@ -27,9 +25,7 @@ export default function BusinessCard({
     description,
     backgroundImage,
     logo,
-    color,
     socials,
-    iteration
 }: Props) {
     return (
         <div data-glow-anchor={id} className="relative">

@@ -65,9 +65,7 @@ export default function BusinessSection({
                             description={b.description}
                             backgroundImage={b.backgroundImage}
                             logo={b.logo}
-                            color={b.color}
                             socials={b.socials}
-                            iteration={i}
                         />
                     ))}
                 </div>

@@ -1,5 +1,6 @@
 import LogoCloudCard from "../business/LogoCloudCard";
 import { businesses } from "../../data/businesses";
+import { motion } from "motion/react";
 
 type Props = {
   t: any,
@@ -13,16 +14,18 @@ export default function LogoCloudSection({
   return (
     <section id="logo-cloud" className="py-8 bg-[#0A0B14]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-0">
-          {businesses(t).map((b) => (
-              <LogoCloudCard
-                key={b.id}
-                id={b.id}
-                color={b.color}
-                logo={b.simple}
-                scrollToSection={scrollToSection}
-              />
-            ))}
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-0"
+        >
+          {businesses(t).map((b, index) => (
+            <LogoCloudCard
+              key={b.id}
+              id={b.id}
+              color={b.color}
+              logo={b.simple}
+              scrollToSection={scrollToSection}
+              delay={index * 0.1}
+            />
+          ))}
         </div>
       </div>
     </section>
