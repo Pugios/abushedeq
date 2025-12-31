@@ -9,7 +9,7 @@ export const translations = {
     hero: {
       title1: "Nathmi",
       title2: "Abushedeq",
-      subtitle: "Immobilienunternehmer, Geschäftsführer, Ex-Botschafter",
+      subtitle: ["Immobilienunternehmer", "Geschäftsführer", "Ex-Botschafter"],
       cta: "Schreib mir",
     },
     businesses: {
@@ -80,7 +80,7 @@ export const translations = {
     hero: {
       title1: "Nathmi",
       title2: "Abushedeq",
-      subtitle: "CEO, Real Estate Entrepreneur, former Ambassador",
+      subtitle: ["CEO", "Real Estate Entrepreneur", "former Ambassador"],
       cta: "Get in Touch",
     },
     businesses: {
@@ -150,7 +150,7 @@ export const translations = {
     hero: {
       title1: "نظمي",
       title2: "أبو شدق",
-      subtitle: "رجل أعمال، ومستثمر عقاري، وسفير سابق",
+      subtitle: ["رجل أعمال"," ومستثمر عقاري","وسفير سابق"],
       cta: "تواصل معنا",
     },
     businesses: {
