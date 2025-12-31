@@ -147,7 +147,7 @@ export default function HeroSection({
           <div className="absolute bottom-0 left-0 right-0 z-30">
             <motion.button
               onClick={() => scrollToSection("contact")}
-              className="w-full px-8 py-4 bg-white/10 hover:bg-white/20 border-t border-white/20 hover:border-white/40 backdrop-blur-sm"
+              className="text-lg w-full px-8 py-4 pb-20 bg-white/10 hover:bg-white/20 border-t border-white/20 hover:border-white/40 backdrop-blur-sm"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
