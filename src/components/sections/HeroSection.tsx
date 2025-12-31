@@ -102,15 +102,14 @@ export default function HeroSection({
       {/* Mobile Layout */}
       <div className="relative lg:hidden w-full h-full flex flex-col">
         {/* Text Content - Top Part */}
-        <div className="flex-shrink-0 px-6 pt-4 z-20">
+        <div className="flex-shrink-0 px-6 pt-4 z-20 text-center">
           <motion.h1
             className="text-4xl sm:text-5xl mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            {t.hero.title1} <br></br>
-            {t.hero.title2}
+            {t.hero.title1} {t.hero.title2}
           </motion.h1>
 
           <motion.h2
