@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { useLanguage } from "./LanguageContext";
 import { translations } from "../data/translations";
+import { image_descriptions } from "../data/image_description";
 import { useEffect, useRef, useState } from "react";
 import svgPaths from "../assets/icons/svg-vymn29r931";
 import imgX from "../assets/icons/x.png";
@@ -140,7 +141,7 @@ export default function About() {
         />
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 font-playfair">
         {/* Title */}
         <motion.div
           className="text-center mb-16"
@@ -340,9 +341,20 @@ export default function About() {
           </button>
 
           {/* Image Counter */}
-          <div className="absolute top-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white">
+          <div className="absolute top-4 left-1/2 -translate-x-1/2 px-4 py-2 my-3 bg-white/10 backdrop-blur-sm rounded-full text-white">
             {selectedImage + 1} / {allImages.length}
           </div>
+
+          {/* Image Description */}
+          {(() => {
+            const filename = allImages[selectedImage].split('/').pop();
+            const description = image_descriptions[filename];
+            return description ? (
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 my-3 bg-white/10 backdrop-blur-sm rounded-full text-white text-center max-w-md">
+                {description}
+              </div>
+            ) : null;
+          })()}
 
           {/* Navigation Buttons */}
           <button

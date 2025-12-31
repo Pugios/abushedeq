@@ -3,6 +3,9 @@
 :root {
   --tw-breakpoints: sm 640px, md 768px, lg 1024px, xl 1280px, 2xl 1536px;
   --font-size: 16px;
+  --font-playfair: 'Playfair Display', serif;
+  --font-inter: 'Inter', sans-serif;
+  --font-lalezar: 'Lalezar', cursive;
   --background: #ffffff;
   --foreground: oklch(0.145 0 0);
   --card: #ffffff;
@@ -142,12 +145,14 @@
     font-size: var(--text-2xl);
     font-weight: var(--font-weight-medium);
     line-height: 1.5;
+    font-family: var(--font-playfair);
   }
 
   h2 {
     font-size: var(--text-xl);
     font-weight: var(--font-weight-medium);
     line-height: 1.5;
+    font-family: var(--font-playfair);
   }
 
   h3 {

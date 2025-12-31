@@ -27,7 +27,6 @@ export default function ContactSection({
             <h1 className="text-3xl sm:text-4xl lg:text-5xl text-center mb-6">
               {t.contact.hero}
             </h1>
-            {/* </div> */}
             <h2 className="text-3xl sm:text-4xl lg:text-5xl text-center">
               {t.contact.title}
             </h2>
