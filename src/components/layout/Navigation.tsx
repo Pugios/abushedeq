@@ -71,7 +71,7 @@ export default function Navigation() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="flex-shrink-0 overflow-hidden h-10 flex items-center">
+          <div className="shrink-0 overflow-hidden h-10 flex items-center">
             <motion.div
               className="cursor-pointer text-2xl"
               style={{ fontFamily: "Lalezar, sans-serif" }}

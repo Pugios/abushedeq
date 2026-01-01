@@ -119,21 +119,31 @@ export default function About() {
     setSelectedImage(null);
   };
 
+  useEffect(() => {
+    const element = document.getElementById("about");
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#0A0B14] text-white pt-24 pb-16 relative overflow-hidden">
       {/* Background Gradients */}
-      <div className="absolute top-0 left-0 w-full h-[800px] pointer-events-none">
+      <div className="absolute top-0 left-0 w-full h-200 pointer-events-none">
         <div
-          className="absolute top-0 left-1/4 w-[800px] h-[800px]"
+          className="absolute top-0 left-1/4 w-200 h-200"
           style={{
             background:
               "radial-gradient(circle, rgba(217, 39, 39, 0.15), transparent 60%)",
           }}
         />
       </div>
-      <div className="absolute top-[600px] right-0 w-full h-[800px] pointer-events-none">
+      <div className="absolute top-150 right-0 w-full h-200 pointer-events-none">
         <div
-          className="absolute top-0 right-1/4 w-[800px] h-[800px]"
+          className="absolute top-0 right-1/4 w-200 h-200"
           style={{
             background:
               "radial-gradient(circle, rgba(220, 198, 133, 0.15), transparent 60%)",
@@ -143,7 +153,8 @@ export default function About() {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 font-playfair">
         {/* Title */}
-        <motion.div
+        <motion.section
+          id="about"
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -152,7 +163,7 @@ export default function About() {
           <h1 className="text-4xl sm:text-5xl lg:text-6xl mb-4">
             {t.about.title}
           </h1>
-        </motion.div>
+        </motion.section>
 
         {/* Scrolling Image Gallery */}
         <motion.div
@@ -180,7 +191,7 @@ export default function About() {
             {galleryImages.map((img, index) => (
               <motion.div
                 key={index}
-                className="flex-shrink-0 w-80 h-96 rounded-xl overflow-hidden cursor-pointer"
+                className="shrink-0 w-80 h-96 rounded-xl overflow-hidden cursor-pointer"
                 whileHover={{ scale: isDragging ? 1 : 1.05 }}
                 transition={{ duration: 0.3 }}
                 onClick={() => handleImageClick(index)}

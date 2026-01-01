@@ -41,7 +41,7 @@ export default function ContactSection({
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <div className="w-10 h-10 md:w-16 md:h-16 md:mb-4 flex items-center justify-center flex-shrink-0">
+              <div className="w-10 h-10 md:w-16 md:h-16 md:mb-4 flex items-center justify-center shrink-0">
                 <svg
                   className="w-full h-full"
                   fill="none"
@@ -89,7 +89,7 @@ export default function ContactSection({
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <div className="w-10 h-10 md:w-16 md:h-16 md:mb-4 flex items-center justify-center flex-shrink-0">
+              <div className="w-10 h-10 md:w-16 md:h-16 md:mb-4 flex items-center justify-center shrink-0">
                 <svg
                   className="w-full h-full"
                   fill="none"
@@ -125,7 +125,7 @@ export default function ContactSection({
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              <div className="w-10 h-10 md:w-16 md:h-16 md:mb-4 flex items-center justify-center flex-shrink-0">
+              <div className="w-10 h-10 md:w-16 md:h-16 md:mb-4 flex items-center justify-center shrink-0">
                 <svg
                   className="w-full h-full"
                   fill="none"

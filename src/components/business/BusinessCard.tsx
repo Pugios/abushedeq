@@ -44,12 +44,12 @@ export default function BusinessCard({
                         src={backgroundImage}
                         className="w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
+                    <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/60 to-black/40" />
                 </div>
 
                 <div className="relative z-10 p-6 sm:p-8 lg:p-12">
                     <div className="flex flex-col sm:flex-row items-start gap-6">
-                        <div className="bg-white p-6 rounded-xl flex-shrink-0">
+                        <div className="bg-white p-6 rounded-xl shrink-0">
                             <img
                                 src={logo}
                                 className="w-24 h-24 sm:w-32 sm:h-32 object-contain"

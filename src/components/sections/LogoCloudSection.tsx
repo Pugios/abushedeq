@@ -1,6 +1,5 @@
 import LogoCloudCard from "../business/LogoCloudCard";
 import { businesses } from "../../data/businesses";
-import { motion } from "motion/react";
 
 type Props = {
   t: any,
