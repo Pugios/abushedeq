@@ -108,6 +108,47 @@ export default function About() {
     setIsDragging(false);
   };
 
+  // Touch handlers for mobile
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (!scrollRef.current) return;
+    setIsDragging(true);
+    const touch = e.touches[0];
+    dragStartXRef.current = touch.clientX;
+    dragScrollLeftRef.current = scrollRef.current.scrollLeft;
+    scrollPositionRef.current = scrollRef.current.scrollLeft;
+    dragDistanceRef.current = 0;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging || !scrollRef.current) return;
+    e.preventDefault();
+    const touch = e.touches[0];
+    const x = touch.clientX;
+    const walk = (dragStartXRef.current - x) * 2; // Multiply by 2 for faster scrolling
+    dragDistanceRef.current = Math.abs(walk);
+    const newScrollLeft = dragScrollLeftRef.current + walk;
+    scrollRef.current.scrollLeft = newScrollLeft;
+    scrollPositionRef.current = newScrollLeft;
+
+    // Handle seamless loop during drag
+    const maxScroll = scrollRef.current.scrollWidth / 2;
+    if (scrollPositionRef.current >= maxScroll) {
+      scrollPositionRef.current = 0;
+      scrollRef.current.scrollLeft = 0;
+      dragScrollLeftRef.current = 0;
+      dragStartXRef.current = touch.clientX;
+    } else if (scrollPositionRef.current < 0) {
+      scrollPositionRef.current = maxScroll - 1;
+      scrollRef.current.scrollLeft = maxScroll - 1;
+      dragScrollLeftRef.current = maxScroll - 1;
+      dragStartXRef.current = touch.clientX;
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
+
   const handleImageClick = (index: number) => {
     // Only open if not dragging (threshold of 5px)
     if (dragDistanceRef.current < 5) {
@@ -183,6 +224,9 @@ export default function About() {
             onMouseDown={handleMouseDown}
             onMouseMove={handleMouseMove}
             onMouseUp={handleMouseUp}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
             style={{
               scrollBehavior: "auto",
               cursor: isDragging ? "grabbing" : "grab",
