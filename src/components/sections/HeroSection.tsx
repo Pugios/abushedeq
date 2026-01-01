@@ -89,7 +89,7 @@ export default function HeroSection({
 
         {/* Image */}
         <motion.img
-          className="flex flex-1 w-1/2 h-1/2 justify-center lg:justify-start order-2 relative z-10 object-contain rounded-2xl px-[193px] py-[0px]"
+          className="flex flex-1 w-1/2 h-1/2 justify-center lg:justify-start order-2 relative z-10 object-contain rounded-2xl px-48.25 py-0"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -102,7 +102,7 @@ export default function HeroSection({
       {/* Mobile Layout */}
       <div className="relative lg:hidden w-full h-full flex flex-col">
         {/* Text Content - Top Part */}
-        <div className="flex-shrink-0 px-6 pt-4 z-20 text-center">
+        <div className="shrink-0 px-6 pt-4 z-20 text-center">
           <motion.h1
             className="text-4xl sm:text-5xl mb-4"
             initial={{ opacity: 0, y: 20 }}
