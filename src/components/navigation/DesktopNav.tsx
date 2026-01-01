@@ -17,10 +17,10 @@ export default function DesktopNav({
     return (
         <div className="hidden md:flex items-center space-x-8">
             <button
-                onClick={() => scrollToSection("logo-cloud")}
+                onClick={() => scrollToSection("contact")}
                 className="text-white/80 hover:text-white transition-colors text-base"
             >
-                {t.nav.businesses}
+                {t.nav.contact}
             </button>
             <Link
                 to="/about"
@@ -28,18 +28,18 @@ export default function DesktopNav({
             >
                 {t.nav.about}
             </Link>
-            <button
-                onClick={() => scrollToSection("contact")}
-                className="text-white/80 hover:text-white transition-colors text-base"
-            >
-                {t.nav.contact}
-            </button>
             <Link
                 to="/press"
                 className="text-white/80 hover:text-white transition-colors text-base"
             >
                 {t.nav.press}
             </Link>
+            <button
+                onClick={() => scrollToSection("logo-cloud")}
+                className="text-white/80 hover:text-white transition-colors text-base"
+            >
+                {t.nav.businesses}
+            </button>
 
             <LanguageSelector
                 language={language}

@@ -19,10 +19,10 @@ export default function MobileNav({
     return (
         <div className="md:hidden py-4 space-y-4 flex flex-col items-end">
             <button
-                onClick={() => scrollToSection("logo-cloud")}
+                onClick={() => scrollToSection("contact")}
                 className="text-white/80 hover:text-white transition-colors text-base"
             >
-                {t.nav.businesses}
+                {t.nav.contact}
             </button>
             <Link
                 to="/about"
@@ -31,12 +31,6 @@ export default function MobileNav({
             >
                 {t.nav.about}
             </Link>
-            <button
-                onClick={() => scrollToSection("contact")}
-                className="text-white/80 hover:text-white transition-colors text-base"
-            >
-                {t.nav.contact}
-            </button>
             <Link
                 to="/press"
                 className="text-white/80 hover:text-white transition-colors text-base"
@@ -44,6 +38,12 @@ export default function MobileNav({
             >
                 {t.nav.press}
             </Link>
+            <button
+                onClick={() => scrollToSection("logo-cloud")}
+                className="text-white/80 hover:text-white transition-colors text-base"
+            >
+                {t.nav.businesses}
+            </button>
 
             {/* Language Selector - Mobile */}
             <LanguageSelector

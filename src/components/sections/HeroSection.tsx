@@ -52,7 +52,7 @@ export default function HeroSection({
             {t.hero.title2}
           </motion.h1>
 
-          <motion.h2
+          <motion.h3
             className="text-4xl text-white max-w-xl ml-auto mb-8 text-right"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -68,7 +68,7 @@ export default function HeroSection({
             >
               {subtitles[currentSubtitleIndex]}
             </motion.span>
-          </motion.h2>
+          </motion.h3>
 
           <motion.button
             onClick={() => scrollToSection("contact")}
@@ -112,7 +112,7 @@ export default function HeroSection({
             {t.hero.title1} {t.hero.title2}
           </motion.h1>
 
-          <motion.h2
+          <motion.h3
             className="text-3xl text-white/70 mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -128,7 +128,7 @@ export default function HeroSection({
             >
               {subtitles[currentSubtitleIndex]}
             </motion.span>
-          </motion.h2>
+          </motion.h3>
         </div>
 
         {/* Image - Bottom Part with CTA on top */}
